@@ -5,7 +5,7 @@ function randomInteger(min, max) {
 }
 window.console.log( randomInteger(0, 544));
 
-// Тернарник
+
 // const testString = 140;
 // let clearString = (testString <= 140) ? 'true' : 'false';
 // window.console.log(clearString);
