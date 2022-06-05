@@ -10,12 +10,15 @@ window.console.log( randomInteger(0, 544));
 // let clearString = (testString <= 140) ? 'true' : 'false';
 // window.console.log(clearString);
 
-const testString = 140;
-let clearString;
-if (testString <= 140) {
-  clearString = true;
-} else {
-  clearString = false;
-}
 
-window.console.log(clearString);
+function exString() {
+  const testString = 140;
+  let clearString;
+  if (testString <= 140) {
+    clearString = true;
+  } else {
+    clearString = false;
+  }
+}
+window.console.log(exString());
+
