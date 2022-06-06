@@ -5,20 +5,16 @@ function randomInteger(min, max) {
 }
 window.console.log( randomInteger(0, 544));
 
-
-// const testString = 140;
-// let clearString = (testString <= 140) ? 'true' : 'false';
-// window.console.log(clearString);
-
-
-function exString() {
-  const testString = 140;
-  let clearString;
-  if (testString <= 140) {
-    clearString = true;
+// CheckString
+function exString(minString) {
+  const maxString = 140;
+  if (maxString >= minString) {
+    minString = true;
+    return minString;
   } else {
-    clearString = false;
+    minString = false;
+    return minString;
   }
 }
-window.console.log(exString());
+window.console.log(exString(20));
 
