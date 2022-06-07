@@ -1,20 +1,18 @@
 // random number
 function randomInteger(min, max) {
+  if (min < 0 || max < 0) {
+    return 'Числа должны быть не отрицательными'
+  }
   const random = min + Math.random() * (max + 1 - min);
   return Math.floor(random);
 }
-window.console.log( randomInteger(0, 544));
+window.console.log( randomInteger(1, 10));
 
-// CheckString
-function exString(minString) {
-  const maxString = 140;
-  if (maxString >= minString) {
-    minString = true;
-    return minString;
-  } else {
-    minString = false;
-    return minString;
-  }
+
+// String
+function checkStringLong(str, maxLong) {
+  return str < maxLong;
 }
-window.console.log(exString(20));
+window.console.log(checkStringLong(-10, -10));
+
 
