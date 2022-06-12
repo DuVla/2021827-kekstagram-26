@@ -6,7 +6,7 @@ function getRandomInteger(min, max) {
   const random = min + Math.random() * (max + 1 - min);
   return Math.floor(random);
 }
-window.console.log( getRandomInteger(1, 10));
+window.console.log( getRandomInteger(10, 10));
 
 
 // String
