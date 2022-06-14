@@ -7,14 +7,14 @@ function getRandomInteger(min, max) {
   const random = min + Math.random() * (max + 1 - min);
   return Math.floor(random);
 }
-//window.console.log( getRandomInteger(1, 10));
+window.console.log( getRandomInteger(1, 10));
 
 
 // String
 function checkStringLength(str, maxLength) {
   return str.length <= maxLength;
 }
-//window.console.log(checkStringLength('text', 140));
+window.console.log(checkStringLength('text', 140));
 
 
 /*
@@ -151,20 +151,18 @@ const SIMILAR_IMG_COUNT = 25;
 const getRandomArrayElement = (elements) => elements
   [getRandomInteger(0, elements.length - 1)];
 
-const createFoto = () => {
-  return {
-    id: getRandomArrayElement(IDS),
-    url: getRandomArrayElement(URLS),
-    description: getRandomArrayElement(DESCRIPTIONS),
-    like: getRandomArrayElement(LIKES),
-    idHooman: getRandomArrayElement(ID_COMMENTS),
+const createFoto = () => ({
+  id: getRandomArrayElement(IDS),
+  url: getRandomArrayElement(URLS),
+  description: getRandomArrayElement(DESCRIPTIONS),
+  likes: getRandomArrayElement(LIKES),
+  comments: {
+    id: getRandomArrayElement(ID_COMMENTS),
     avatar: getRandomArrayElement(AVATARS),
     message: getRandomArrayElement(MESSAGES),
     name: getRandomArrayElement(NAMES),
-  };
-};
-const similarImg = Array.from({length: SIMILAR_IMG_COUNT}, createFoto);
-window.console.log(similarImg);
+  }
+});
 
-//commentator
-
+const similarPhotos = Array.from({length: SIMILAR_IMG_COUNT}, createFoto);
+window.console.log(similarPhotos);
