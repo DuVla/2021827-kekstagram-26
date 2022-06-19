@@ -55,13 +55,8 @@ const NAMES = [
 ];
 
 const SIMILAR_IMG_COUNT = 25;
-// Тасование Фишера — Йетса: https://learn.javascript.ru/task/shuffle
-const shuffle = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-};
+
+
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
 const createPhoto = (id) => ({
@@ -70,7 +65,7 @@ const createPhoto = (id) => ({
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomPositiveInteger(15, 200),
   comments: [{
-    id: shuffle(getRandomPositiveInteger(1, 500)),
+    id: getRandomPositiveInteger(1, 100) + Math.random(),
     avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
     message: getRandomArrayElement(MESSAGES),
     name: getRandomArrayElement(NAMES),
