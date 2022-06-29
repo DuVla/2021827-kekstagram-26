@@ -17,15 +17,15 @@ import {createPhotos} from './data.js';
 
 const similarListElelemet = document.querySelector('.pictures');
 const similarUserTemplate = document.querySelector('#picture').content.querySelector('.picture');
-const similarUsers = createPhotos();
-const similarListFragment = document.createDocumentFragment()
+const similarUsers = createPhotos;
+const similarListFragment = document.createDocumentFragment();
 similarUsers.forEach(({url, likes, comments}) => {
   const userElement = similarUserTemplate.cloneNode(true);
-  userElement.querySelector('.picture__img').textContent = url;
+  userElement.querySelector('.picture__img').src = url;
   userElement.querySelector('.picture__likes').textContent = likes;
-  userElement.querySelector('.picture__comments').textContent = comments;
+  userElement.querySelector('.picture__comments').textContent = comments.length;
   similarListFragment.appendChild(userElement);
 });
 
 similarListElelemet.appendChild(similarListFragment);
-
+window.console.log(similarListElelemet);

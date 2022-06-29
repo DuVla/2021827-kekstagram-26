@@ -78,3 +78,4 @@ const createPhotos = makePhotos(SIMILAR_IMG_COUNT);
 window.console.log(createPhotos);
 
 export {createPhotos};
+
