@@ -1,5 +1,5 @@
 import {createPhotos} from './data.js';
-
+import {showPictureFull} from './big-picture.js';
 const similarListElelemet = document.querySelector('.pictures');
 const similarUserTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const similarUsers = createPhotos;
@@ -11,5 +11,9 @@ similarUsers.forEach(({url, likes, comments}) => {
   userElement.querySelector('.picture__likes').textContent = likes;
   userElement.querySelector('.picture__comments').textContent = comments.length;
   similarListFragment.appendChild(userElement);
+
+  userElement.addEventListener('click', () => {
+    showPictureFull(url, likes, comments);
+  });
 });
 similarListElelemet.appendChild(similarListFragment);
