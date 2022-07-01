@@ -20,7 +20,7 @@ const showComments = 5;
 function showCommentsAll(commentsInfo) {
   const commentFragment = document.createDocumentFragment();
 
-  commentsInfo.forEach(({avatar, name, message}) => {
+  commentsInfo.forEach(({ avatar, name, message }) => {
     const comment = bigPictureCommentItem.cloneNode(true);
     comment.querySelector('.social__picture').src = avatar;
     comment.querySelector('.social__picture').alt = name;
@@ -52,7 +52,7 @@ function commentClickHandler() {
     pictureCommentLoader.classList.add('hidden');
   }
 
-  pictureCommentCount.firstChild.textContent = `${bigPictureCommentsList.children.length }`;
+  pictureCommentCount.firstChild.textContent = `${bigPictureCommentsList.children.length}`;
 }
 
 export function showPictureFull(url, likes, comments, description) {
@@ -77,7 +77,7 @@ function escEvent(evt) {
 }
 
 function closeEscHandler(evt) {
-  if (escEvent(evt)) {
+  if (!escEvent(evt)) {
     evt.preventDefault();
     modalCloseClickHandler();
   }
