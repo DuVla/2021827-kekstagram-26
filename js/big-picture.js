@@ -1,5 +1,8 @@
 // модуль, который отвечаeт за отрисовку окна с полноразмерным изображением.
-//modal open
+import { escEvent } from './util.js';
+
+const SHOW_COMMENTS = 5;
+
 const modal = document.querySelector('.big-picture');
 const closeButtonModal = document.querySelector('#upload-cancel');
 const body = document.querySelector('body');
@@ -15,7 +18,7 @@ const pictureCommentsDescription = document.querySelector('.social__caption');
 const pictureCommentCount = document.querySelector('.social__comment-count');
 const pictureCommentLoader = document.querySelector('.comments-loader');
 const bigPictureCommentItem = document.querySelector('.social__comment');
-const showComments = 5;
+
 
 function showCommentsAll(commentsInfo) {
   const commentFragment = document.createDocumentFragment();
@@ -32,7 +35,7 @@ function showCommentsAll(commentsInfo) {
 }
 
 function showOneComments(comments) {
-  const visibleComments = comments.slice(0, showComments);
+  const visibleComments = comments.slice(0, SHOW_COMMENTS);
   const firstComments = showCommentsAll(visibleComments);
 
   pictureCommentCount.firstChild.textContent = `${visibleComments.length}`;
@@ -44,7 +47,7 @@ function showOneComments(comments) {
 }
 
 function commentClickHandler() {
-  const addingComments = realComment.slice(bigPictureCommentsList.children.length, bigPictureCommentsList.children.length + showComments);
+  const addingComments = realComment.slice(bigPictureCommentsList.children.length, bigPictureCommentsList.children.length + SHOW_COMMENTS);
   const showMoreComments = showCommentsAll(addingComments);
   bigPictureCommentsList.appendChild(showMoreComments);
 
@@ -72,9 +75,7 @@ export function showPictureFull(url, likes, comments, description) {
 
 
 // modal
-function escEvent(evt) {
-  return evt.key === 'Esсape' || evt.key === 'Esc';
-}
+
 
 function closeEscHandler(evt) {
   if (!escEvent(evt)) {

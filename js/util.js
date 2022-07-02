@@ -16,6 +16,11 @@ function checkStringLength(str, maxLength) {
   return str.length <= maxLength;
 }
 
+function escEvent(evt) {
+  return evt.key === 'Esсape' || evt.key === 'Esc';
+}
+
 export {getRandomArrayElement};
 export {getRandomPositiveInteger};
 export {checkStringLength};
+export {escEvent};
