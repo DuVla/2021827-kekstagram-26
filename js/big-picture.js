@@ -78,7 +78,7 @@ export function showPictureFull(url, likes, comments, description) {
 
 
 function closeEscHandler(evt) {
-  if (!escEvent(evt)) {
+  if (escEvent(evt)) {
     evt.preventDefault();
     modalCloseClickHandler();
   }
