@@ -4,3 +4,4 @@ import './util.js';
 import './miniatures.js';
 import './big-picture.js';
 import './form-validation.js';
+import './user-form.js';

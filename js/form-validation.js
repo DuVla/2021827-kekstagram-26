@@ -18,6 +18,8 @@ const viePhotoSpectator = document.querySelector('.img-upload__preview img');
 // Photo Effect
 const photoEffectSpectator = document.querySelector('.effects__preview');
 
+// Hashtag
+
 function escCloseKeyHandler(evt) {
   const inputFocus = evt.target.matches('input:focus') || evt.target.matches('textarea:focus');
   if (inputFocus) {
@@ -37,6 +39,7 @@ function modalOpenUpload() {
   document.addEventListener('keydown', escCloseKeyHandler);
 }
 modalOpenUpload();
+
 function modalCloseUploadClickHandler() {
   loadingOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
