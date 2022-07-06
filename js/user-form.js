@@ -1,4 +1,5 @@
 // valid text and hashtag
+
 const HASHTAG = /^#[A-Za-zА-Яа-я0-9]{1,19}$/;
 const form = document.querySelector('.img-upload__form');
 const inputHashtag = form.querySelector('#hashtags');
@@ -14,6 +15,8 @@ const pristine = new Pristine(form, {
   errorTextClass: 'img-upload__form--error',
 });
 
+// const commentValid = (value) => value.length <= 140;
+
 function validateHashtag(value) {
   const hashtagAll = value.split('');
   let isValidate = true;
@@ -26,17 +29,15 @@ function validateHashtag(value) {
   return isValidate;
 }
 
-const commentValid = (value) => value.length <= 140;
-
-pristine.addValidator(
-  descriptionInput,
-  commentValid,
-  'Не более 140 символов'
-);
+// pristine.addValidator(
+//   descriptionInput,
+//   commentValid,
+//   'Не более 140 символов'
+// );
 
 pristine.addValidator(
   inputHashtag,
-  validateHashtag(),
+  validateHashtag,
   'Неверный формат'
 );
 

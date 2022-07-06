@@ -117,14 +117,17 @@
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
                   <div class="img-upload__field-wrapper img-upload__form--element">
-                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег" value=""  minlength ="0" required
-                    data-pristine-required-message="хэш-тег начинается с символа #">
+                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег" value=""  minlength ="2" required
+                    data-pristine-required-message="хэш-тег можно не писать"
+                    data-pristine-pattern="//^#[A-Za-zА-Яа-я0-9]{1,19}$/"
+                    data-pristine-pattern-message="хэш-тег начинается с символа #">
 
                   </div>
                   <div class="img-upload__field-wrapper img-upload__form--element">
                     <textarea class="text__description" name="description" placeholder="Ваш комментарий..." value="text" maxlength="140" required
                     data-pristine-required-message="Комментарий не обязателен"
                     data-pristine-maxlength-message="Максимальная длинна 140 символов"
+                    data-pristine-pattern-message="максимальная длинна 140 символов"
                     ></textarea>
                   </div>
                 </fieldset>
