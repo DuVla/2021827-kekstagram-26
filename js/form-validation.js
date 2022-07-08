@@ -6,17 +6,18 @@ const ALLOWED_FORMATS_PHOTO = ['png', 'jpeg', 'jpg'];
 // modal open
 const loadingOverlay = document.querySelector('.img-upload__overlay');
 // close form upload ID add esc + add class hidden
-const closeUpload = document.querySelector('.img-upload__cancel');
+const closeUpload = document.querySelector('#upload-cancel');
 // focus image
 const uploadForm = document.querySelector('.img-upload__form');
 // body close class modal-open
 const body = document.querySelector('body');
 //html O
-const uploadInput = document.querySelector('.img-upload__input');
+const uploadInput = uploadForm.querySelector('.img-upload__input');
 // spectator photo
-const viePhotoSpectator = document.querySelector('.img-upload__preview img');
+const photoPreview = uploadForm.querySelector('.img-upload__preview img');
 // Photo Effect
-const photoEffectSpectator = document.querySelector('.effects__preview');
+const photoEffectPreview = document.querySelector('.effects__preview');
+
 
 // Hashtag
 
@@ -27,6 +28,7 @@ function escCloseKeyHandler(evt) {
   }
   if (escEvent(evt)) {
     evt.preventDefault();
+
     modalCloseUploadClickHandler();
   }
 }
@@ -38,7 +40,6 @@ function modalOpenUpload() {
   closeUpload.addEventListener('click', modalCloseUploadClickHandler);
   document.addEventListener('keydown', escCloseKeyHandler);
 }
-modalOpenUpload();
 
 function modalCloseUploadClickHandler() {
   loadingOverlay.classList.add('hidden');
@@ -60,11 +61,9 @@ uploadInput.addEventListener('change', (evt) => {
     modalOpenUpload();
 
     const reader = new FileReader();
+
     reader.addEventListener('load', () => {
-      viePhotoSpectator.src = reader.result;
-      photoEffectSpectator.forEach((spectator) => {
-        spectator.style.backgroundImage =  `url('${reader.result}')`;
-      });
+      photoPreview.src = reader.result;
     });
 
     reader.readAsDataURL(file);
@@ -73,7 +72,7 @@ uploadInput.addEventListener('change', (evt) => {
 
 function resetInput() {
   uploadInput.value = '';
-  viePhotoSpectator.src = DEFAULT_IMAGE;
-  photoEffectSpectator.src = DEFAULT_IMAGE;
+  photoPreview.src = DEFAULT_IMAGE;
+  photoEffectPreview.src = DEFAULT_IMAGE;
 }
 
