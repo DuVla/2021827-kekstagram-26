@@ -76,9 +76,8 @@ export function showPictureFull(url, likes, comments, description) {
 
 // modal
 
-
 function closeEscHandler(evt) {
-  if (!escEvent(evt)) {
+  if (escEvent(evt)) {
     evt.preventDefault();
     modalCloseClickHandler();
   }
@@ -99,4 +98,9 @@ function modalCloseClickHandler() {
 
   closeButtonModal.removeEventListener('click', modalCloseClickHandler);
   document.removeEventListener('keydown', closeEscHandler);
+}
+
+
+export function delEvent(evt) {
+  return evt.target.matches('section');
 }
