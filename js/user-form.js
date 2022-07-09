@@ -27,7 +27,7 @@ const pristine = new Pristine(form, {
 // Проверка комметариев
 pristine.addValidator(
   descriptionInput,
-  (comment) => getRandomArrayElement(0, 140)(comment, COMMENT_MAX_TEXT_LENGTH),
+  (comment) => getRandomArrayElement(0, COMMENT_MAX_TEXT_LENGTH)(comment, COMMENT_MAX_TEXT_LENGTH),
   'Длина не более 140 символов'
 );
 
