@@ -12,6 +12,9 @@ const DESCRIPTIONS = [
 const MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
+  'Гуд',
+  'Очень хорошее фото',
+  'Превосходная фотография',
 ];
 
 const NAMES = [
@@ -71,11 +74,3 @@ const createPhoto = () => ({
 const makePhotos = (number) => Array.from({length: number}, createPhoto);
 const createPhotos = makePhotos(SIMILAR_IMG_COUNT);
 export {createPhotos};
-
-// const makePhotos = () => {
-//   const testData = [];
-//   for (let i = 1; i <= 25; i++) {
-//     testData.push(createPhoto(i));
-//   }
-//   return testData;
-// };

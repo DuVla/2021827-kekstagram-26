@@ -1,19 +1,29 @@
-import {createPhotos} from './data.js';
-import {showPictureFull} from './big-picture.js';
+import { createPhotos } from './data.js';
+import { showPictureFull } from './big-picture.js';
+
 const similarListElelemet = document.querySelector('.pictures');
 const similarUserTemplate = document.querySelector('#picture').content.querySelector('.picture');
+
 const similarUsers = createPhotos;
-const similarListFragment = document.createDocumentFragment();
 
-similarUsers.forEach(({url, likes, comments}) => {
-  const userElement = similarUserTemplate.cloneNode(true);
-  userElement.querySelector('.picture__img').src = url;
-  userElement.querySelector('.picture__likes').textContent = likes;
-  userElement.querySelector('.picture__comments').textContent = comments.length;
-  similarListFragment.appendChild(userElement);
+function removeOldList() {
+  similarListElelemet.querySelectorAll('.picture').forEach((item) => item.remove());
+}
 
-  userElement.addEventListener('click', () => {
-    showPictureFull(url, likes, comments);
+const pictureListFragment = document.createDocumentFragment();
+removeOldList();
+
+similarUsers.forEach(({ id, url, likes, comments, description }) => {
+  const picture = similarUserTemplate.cloneNode(true);
+
+  picture.href = `#${id}`;
+  picture.querySelector('.picture__img').src = url;
+  picture.querySelector('.picture__comments').textContent = comments.length;
+  picture.querySelector('.picture__likes').textContent = likes;
+
+  picture.addEventListener('click', () => {
+    showPictureFull(url, likes, comments, description);
   });
+  pictureListFragment.append(picture);
 });
-similarListElelemet.appendChild(similarListFragment);
+similarListElelemet.append(pictureListFragment);

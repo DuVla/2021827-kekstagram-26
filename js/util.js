@@ -1,4 +1,7 @@
 // модуль с вспомогательными функциями;
+const BUTTON = ['Escape', 'Esc'];
+
+
 function getRandomPositiveInteger(min, max) {
   if (min < 0 || max < 0) {
     throw new RangeError('Числа не должны быть отрицательными');
@@ -18,21 +21,19 @@ function checkStringLength(str, maxLength) {
 
 const arrayUnique = (elements) => !elements.some((element, index) => elements.indexOf(element) !== index);
 
-function escEvent(evt) {
-  return evt.key === 'Esсape' || evt.key === 'Esc';
-}
+const escEvent = (evt) => BUTTON.includes(evt.key);
+
 
 // unique id and url
-
 const randomIntegerNoRepeat = (min, max) => {
   const spawn = [];
 
-  return function ()  {
+  return function () {
     let currentValue = getRandomPositiveInteger(min, max);
     if (spawn.length >= (max - min + 1)) {
       spawn.length = 0;
     }
-    while (spawn.includes(currentValue)){
+    while (spawn.includes(currentValue)) {
       currentValue = getRandomPositiveInteger(min, max);
     }
     spawn.push(currentValue);
@@ -41,9 +42,9 @@ const randomIntegerNoRepeat = (min, max) => {
   };
 };
 
-export {getRandomArrayElement};
-export {getRandomPositiveInteger};
-export {checkStringLength};
-export {escEvent};
-export {arrayUnique};
-export {randomIntegerNoRepeat};
+export { getRandomArrayElement };
+export { getRandomPositiveInteger };
+export { checkStringLength };
+export { escEvent };
+export { arrayUnique };
+export { randomIntegerNoRepeat };
