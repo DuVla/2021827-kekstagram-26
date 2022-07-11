@@ -1,6 +1,7 @@
 // модуль, который отвечаeт за отрисовку окна с полноразмерным изображением.
 import { escEvent } from './util.js';
 
+let realComment = [];
 const SHOW_COMMENTS = 5;
 
 const modal = document.querySelector('.big-picture');
@@ -10,7 +11,7 @@ const body = document.querySelector('body');
 const closeBigPicturePhoto = document.querySelector('.big-picture__cancel');
 const bigPicturePhoto = document.querySelector('.big-picture__img img');
 const bigPictureLike = document.querySelector('.likes-count');
-let realComment = [];
+
 // Comments
 const bigPictureComments = document.querySelector('.comments-count');
 const bigPictureCommentsList = document.querySelector('.social__comments');
@@ -27,7 +28,7 @@ function showCommentsAll(commentsInfo) {
     const comment = bigPictureCommentItem.cloneNode(true);
     comment.querySelector('.social__picture').src = avatar;
     comment.querySelector('.social__picture').alt = name;
-    comment.querySelector('.social__picture').textContent = message;
+    comment.querySelector('.social__text').textContent = message;
 
     commentFragment.append(comment);
   });
@@ -38,7 +39,7 @@ function showOneComments(comments) {
   const visibleComments = comments.slice(0, SHOW_COMMENTS);
   const firstComments = showCommentsAll(visibleComments);
 
-  pictureCommentCount.firstChild.textContent = `${visibleComments.length}`;
+  pictureCommentCount.firstChild.textContent = `${visibleComments.length } из `;
   bigPictureCommentsList.appendChild(firstComments);
 
   if (visibleComments.length === comments.length) {
@@ -55,7 +56,7 @@ function commentClickHandler() {
     pictureCommentLoader.classList.add('hidden');
   }
 
-  pictureCommentCount.firstChild.textContent = `${bigPictureCommentsList.children.length}`;
+  pictureCommentCount.firstChild.textContent = `${bigPictureCommentsList.children.length } из `;
 }
 
 export function showPictureFull(url, likes, comments, description) {
@@ -79,6 +80,7 @@ export function showPictureFull(url, likes, comments, description) {
 function closeEscHandler(evt) {
   if (escEvent(evt)) {
     evt.preventDefault();
+
     modalCloseClickHandler();
   }
 }
@@ -98,9 +100,4 @@ function modalCloseClickHandler() {
 
   closeButtonModal.removeEventListener('click', modalCloseClickHandler);
   document.removeEventListener('keydown', closeEscHandler);
-}
-
-
-export function delEvent(evt) {
-  return evt.target.matches('section');
 }

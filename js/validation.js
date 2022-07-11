@@ -1,6 +1,7 @@
 // valid text and hashtag
 import { arrayUnique } from './util.js';
-import { getRandomArrayElement } from './util.js';
+// import { getRandomArrayElement } from './util.js';
+import { checkStringLength} from './util.js';
 
 const COMMENT_MAX_TEXT_LENGTH = 140;
 const Hashtags = {
@@ -12,7 +13,7 @@ const Hashtags = {
 
 const form = document.querySelector('.img-upload__form');
 const hashtagsInput = form.querySelector('.text__hashtags');
-const descriptionInput = form.querySelector('text__description');
+const descriptionInput = form.querySelector('.text__description');
 
 
 const pristine = new Pristine(form, {
@@ -27,9 +28,10 @@ const pristine = new Pristine(form, {
 // Проверка комметариев
 pristine.addValidator(
   descriptionInput,
-  (comment) => getRandomArrayElement(0, 140)(comment, COMMENT_MAX_TEXT_LENGTH),
+  (comment) => checkStringLength(comment, COMMENT_MAX_TEXT_LENGTH),
   'Длина не более 140 символов'
 );
+
 
 // Проверка хештегов
 // Не больше 5
