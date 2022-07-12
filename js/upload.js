@@ -1,4 +1,6 @@
 import { escEvent } from './util.js';
+import { resetModifier } from './scale-photo.js';
+import { resetEffectSetting} from './effects-photo.js';
 // default photo
 const DEFAULT_IMAGE = 'img/upload-default-image.jpg';
 // Какие форматы изображений можно добавлять
@@ -46,6 +48,8 @@ function modalCloseUploadClickHandler() {
   body.classList.remove('modal-open');
 
   uploadForm.reset();
+  resetEffectSetting();
+  resetModifier();
   resetInput();
 
   closeUpload.removeEventListener('click', modalCloseUploadClickHandler);

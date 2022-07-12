@@ -5,3 +5,5 @@ import './miniatures.js';
 import './big-picture.js';
 import './validation.js';
 import './upload.js';
+import './scale-photo.js';
+import './effects-photo.js';
