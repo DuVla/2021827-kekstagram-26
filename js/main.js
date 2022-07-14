@@ -7,3 +7,4 @@ import './validation.js';
 import './upload.js';
 import './scale-photo.js';
 import './effects-photo.js';
+import './api.js';
