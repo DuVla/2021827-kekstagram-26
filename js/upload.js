@@ -64,7 +64,7 @@ uploadInput.addEventListener('change', (evt) => {
   if (goodFormat) {
     modalOpenUpload();
 
-    const reader = new FileReader();
+  const reader = new FileReader();
 
     reader.addEventListener('load', () => {
       photoPreview.src = reader.result;
