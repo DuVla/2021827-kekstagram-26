@@ -1,6 +1,6 @@
 // модуль с вспомогательными функциями;
 const BUTTON = ['Escape', 'Esc'];
-
+const ALERT_SHOW_TIME = 5000;
 
 function getRandomPositiveInteger(min, max) {
   if (min < 0 || max < 0) {
@@ -42,9 +42,22 @@ const randomIntegerNoRepeat = (min, max) => {
   };
 };
 
+function showAlert(message) {
+  const alert = document.createElement('div');
+  alert.textContent = message;
+  alert.classList.add('alert-message--active');
+  document.body.append(alert);
+
+  setTimeout(() => {
+    alert.remove();
+  }, ALERT_SHOW_TIME);
+}
+
 export { getRandomArrayElement };
 export { getRandomPositiveInteger };
 export { checkStringLength };
 export { escEvent };
 export { arrayUnique };
 export { randomIntegerNoRepeat };
+export { showAlert };
+export { ALERT_SHOW_TIME };

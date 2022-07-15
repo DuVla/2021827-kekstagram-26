@@ -1,6 +1,5 @@
 // valid text and hashtag
 import { arrayUnique } from './util.js';
-// import { getRandomArrayElement } from './util.js';
 import { checkStringLength} from './util.js';
 
 const COMMENT_MAX_TEXT_LENGTH = 140;

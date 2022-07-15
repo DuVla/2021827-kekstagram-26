@@ -1,6 +1,7 @@
 import { escEvent } from './util.js';
 import { resetModifier } from './scale-photo.js';
 import { resetEffectSetting} from './effects-photo.js';
+
 // default photo
 const DEFAULT_IMAGE = 'img/upload-default-image.jpg';
 // Какие форматы изображений можно добавлять
@@ -43,7 +44,13 @@ function modalOpenUpload() {
   document.addEventListener('keydown', escCloseKeyHandler);
 }
 
-function modalCloseUploadClickHandler() {
+export function resetInput() {
+  uploadInput.value = '';
+  photoPreview.src = DEFAULT_IMAGE;
+  photoEffectPreview.src = DEFAULT_IMAGE;
+}
+
+export function modalCloseUploadClickHandler() {
   loadingOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
 
@@ -63,8 +70,7 @@ uploadInput.addEventListener('change', (evt) => {
   const goodFormat = ALLOWED_FORMATS_PHOTO.some((type) => fileName.endsWith(type));
   if (goodFormat) {
     modalOpenUpload();
-
-  const reader = new FileReader();
+    const reader = new FileReader();
 
     reader.addEventListener('load', () => {
       photoPreview.src = reader.result;
@@ -73,10 +79,3 @@ uploadInput.addEventListener('change', (evt) => {
     reader.readAsDataURL(file);
   }
 });
-
-function resetInput() {
-  uploadInput.value = '';
-  photoPreview.src = DEFAULT_IMAGE;
-  photoEffectPreview.src = DEFAULT_IMAGE;
-}
-

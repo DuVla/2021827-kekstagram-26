@@ -1,13 +1,13 @@
 import { createPhotos } from './data.js';
 import { showPictureFull } from './big-picture.js';
 
-const similarListElelemet = document.querySelector('.pictures');
+const similarListElement = document.querySelector('.pictures');
 const similarUserTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
 const similarUsers = createPhotos;
 
 function removeOldList() {
-  similarListElelemet.querySelectorAll('.picture').forEach((item) => item.remove());
+  similarListElement.querySelectorAll('.picture').forEach((item) => item.remove());
 }
 
 const pictureListFragment = document.createDocumentFragment();
@@ -26,4 +26,4 @@ similarUsers.forEach(({ id, url, likes, comments, description }) => {
   });
   pictureListFragment.append(picture);
 });
-similarListElelemet.append(pictureListFragment);
+similarListElement.append(pictureListFragment);
