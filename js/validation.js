@@ -1,6 +1,9 @@
 // valid text and hashtag
 import { arrayUnique } from './util.js';
 import { checkStringLength} from './util.js';
+import {sendData} from './api.js';
+import {modalCloseUploadClickHandler, resetInput} from './upload.js';
+import {openAlert} from './popup-alert.js';
 
 const COMMENT_MAX_TEXT_LENGTH = 140;
 const Hashtags = {
@@ -69,11 +72,34 @@ pristine.addValidator(
   'Хэш-теги не должны повторяться'
 );
 
+function resetUploadForm() {
+  form.reset();
+
+  modalCloseUploadClickHandler();
+  resetInput();
+}
+
 form.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();
   if (!isValid) {
     evt.preventDefault();
   }
+});
+
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+
+  sendData(
+    () => {
+      resetUploadForm();
+      openAlert('success');
+    },
+    () => {
+      resetUploadForm();
+      openAlert('error');
+    },
+    new FormData(form),
+  );
 });
 
 form.addEventListener('change', () => {

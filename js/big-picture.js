@@ -61,6 +61,7 @@ function commentClickHandler() {
 
 export function showPictureFull(url, likes, comments, description) {
   bigPictureModalOpen();
+
   bigPicturePhoto.src = url;
   bigPictureLike.textContent = likes;
   bigPictureComments.textContent = comments.length;

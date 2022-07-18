@@ -23,6 +23,9 @@ const arrayUnique = (elements) => !elements.some((element, index) => elements.in
 
 const escEvent = (evt) => BUTTON.includes(evt.key);
 
+function isOutsideEvent(evt) {
+  return evt.target.matches('section');
+}
 
 // unique id and url
 const randomIntegerNoRepeat = (min, max) => {
@@ -42,16 +45,17 @@ const randomIntegerNoRepeat = (min, max) => {
   };
 };
 
-function showAlert(message) {
-  const alert = document.createElement('div');
-  alert.textContent = message;
-  alert.classList.add('alert-message--active');
-  document.body.append(alert);
+function debounce(cb, delay) {
+  let timer;
 
-  setTimeout(() => {
-    alert.remove();
-  }, ALERT_SHOW_TIME);
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      cb.apply(this, args);
+    }, delay);
+  };
 }
+
 
 export { getRandomArrayElement };
 export { getRandomPositiveInteger };
@@ -59,5 +63,7 @@ export { checkStringLength };
 export { escEvent };
 export { arrayUnique };
 export { randomIntegerNoRepeat };
-export { showAlert };
 export { ALERT_SHOW_TIME };
+export { debounce };
+export { isOutsideEvent };
+
