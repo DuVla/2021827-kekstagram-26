@@ -6,4 +6,3 @@ import './upload.js';
 import './scale-photo.js';
 import './effects-photo.js';
 import './filter-list.js';
-
