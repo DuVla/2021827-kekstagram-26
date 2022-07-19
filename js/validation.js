@@ -1,4 +1,3 @@
-// valid text and hashtag
 import { arrayUnique } from './util.js';
 import { checkStringLength} from './util.js';
 import {sendData} from './api.js';
