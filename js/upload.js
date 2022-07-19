@@ -1,6 +1,7 @@
 import { escEvent } from './util.js';
 import { resetModifier } from './scale-photo.js';
 import { resetEffectSetting} from './effects-photo.js';
+
 // default photo
 const DEFAULT_IMAGE = 'img/upload-default-image.jpg';
 // Какие форматы изображений можно добавлять
@@ -23,7 +24,7 @@ const photoEffectPreview = document.querySelector('.effects__preview');
 
 // Hashtag
 
-function escCloseKeyHandler(evt) {
+const escCloseKeyHandler = (evt) => {
   const inputFocus = evt.target.matches('input:focus') || evt.target.matches('textarea:focus');
   if (inputFocus) {
     return false;
@@ -33,17 +34,23 @@ function escCloseKeyHandler(evt) {
 
     modalCloseUploadClickHandler();
   }
-}
+};
 
-function modalOpenUpload() {
+const modalOpenUpload = () =>{
   loadingOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   //close
   closeUpload.addEventListener('click', modalCloseUploadClickHandler);
   document.addEventListener('keydown', escCloseKeyHandler);
-}
+};
 
-function modalCloseUploadClickHandler() {
+export const resetInput = () => {
+  uploadInput.value = '';
+  photoPreview.src = DEFAULT_IMAGE;
+  photoEffectPreview.src = DEFAULT_IMAGE;
+};
+
+export function modalCloseUploadClickHandler()  {
   loadingOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
 
@@ -63,7 +70,6 @@ uploadInput.addEventListener('change', (evt) => {
   const goodFormat = ALLOWED_FORMATS_PHOTO.some((type) => fileName.endsWith(type));
   if (goodFormat) {
     modalOpenUpload();
-
     const reader = new FileReader();
 
     reader.addEventListener('load', () => {
@@ -73,10 +79,3 @@ uploadInput.addEventListener('change', (evt) => {
     reader.readAsDataURL(file);
   }
 });
-
-function resetInput() {
-  uploadInput.value = '';
-  photoPreview.src = DEFAULT_IMAGE;
-  photoEffectPreview.src = DEFAULT_IMAGE;
-}
-

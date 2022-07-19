@@ -72,12 +72,12 @@ const sliderOptions = {
   },
 };
 
-function loadFilterClass(className) {
+const loadFilterClass = (className) => {
   photoPreview.classList = '';
   photoPreview.classList.add(className);
-}
+};
 
-function updateSliderOptions({ RANGE: { MIN, MAX }, START, STEP, REAL_EFFECT, EFFECT_MEASURE }, startValue, display) {
+const updateSliderOptions = ({ RANGE: { MIN, MAX }, START, STEP, REAL_EFFECT, EFFECT_MEASURE }, startValue, display) => {
   realEffect = REAL_EFFECT;
   effectMeasure = EFFECT_MEASURE;
 
@@ -92,14 +92,14 @@ function updateSliderOptions({ RANGE: { MIN, MAX }, START, STEP, REAL_EFFECT, EF
 
   effectSlider.noUiSlider.set(startValue);
   effectContainer.style.display = display;
-}
+};
 
-function resetEffectSetting() {
+const resetEffectSetting = () => {
   photoPreview.classList = '';
   photoPreview.style.filter = '';
 
   updateSliderOptions(sliderOptions.NONE, DEFAULT_START, 'none');
-}
+};
 
 noUiSlider.create(effectSlider, {
   connect: 'lower',
