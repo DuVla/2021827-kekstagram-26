@@ -24,7 +24,7 @@ const photoEffectPreview = document.querySelector('.effects__preview');
 
 // Hashtag
 
-function escCloseKeyHandler(evt) {
+const escCloseKeyHandler = (evt) => {
   const inputFocus = evt.target.matches('input:focus') || evt.target.matches('textarea:focus');
   if (inputFocus) {
     return false;
@@ -34,23 +34,23 @@ function escCloseKeyHandler(evt) {
 
     modalCloseUploadClickHandler();
   }
-}
+};
 
-function modalOpenUpload() {
+const modalOpenUpload = () =>{
   loadingOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   //close
   closeUpload.addEventListener('click', modalCloseUploadClickHandler);
   document.addEventListener('keydown', escCloseKeyHandler);
-}
+};
 
-export function resetInput() {
+export const resetInput = () => {
   uploadInput.value = '';
   photoPreview.src = DEFAULT_IMAGE;
   photoEffectPreview.src = DEFAULT_IMAGE;
-}
+};
 
-export function modalCloseUploadClickHandler() {
+export function modalCloseUploadClickHandler()  {
   loadingOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
 

@@ -4,7 +4,7 @@ const url = {
 };
 
 
-export function sendData(onSuccess, onFailure, body) {
+export const sendData =(onSuccess, onFailure, body) => {
   fetch(url.POST,
     {
       method: 'POST',
@@ -20,7 +20,7 @@ export function sendData(onSuccess, onFailure, body) {
       }
     })
     .catch(() => onFailure());
-}
+};
 
 export async function fetchPhoto() {
   const response = await fetch(url.GET,

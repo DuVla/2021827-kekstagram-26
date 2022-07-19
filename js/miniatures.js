@@ -11,11 +11,11 @@ const similarUserTemplate = document.querySelector('#picture').content.querySele
 const filterContainer = document.querySelector('.img-filters');
 
 
-function removeOldList() {
+const removeOldList = () => {
   similarListElement.querySelectorAll('.picture').forEach((item) => item.remove());
-}
+};
 
-function createPictureList(pictureData) {
+const createPictureList = (pictureData) => {
   const pictureListFragment = document.createDocumentFragment();
   removeOldList();
 
@@ -34,12 +34,12 @@ function createPictureList(pictureData) {
     pictureListFragment.append(picture);
   });
   similarListElement.append(pictureListFragment);
-}
+};
 
-export function renderPictureList(pictureData) {
+export const renderPictureList= (pictureData) => {
   createPictureList(pictureData);
 
-  function changeFilterHandler(evt) {
+  const changeFilterHandler = (evt) => {
     const target = evt.target;
 
     switch (target.id) {
@@ -59,10 +59,11 @@ export function renderPictureList(pictureData) {
         );
         break;
     }
-  }
+  };
   filterContainer.addEventListener('click', debounce(changeFilterHandler, RERENDER_DELAY));
-}
-export function getPictureList() {
+};
+
+export const getPictureList = () => {
   fetchPhoto()
     .then((data) => {
       renderPictureList(data);
@@ -71,6 +72,6 @@ export function getPictureList() {
     .catch(() => {
       openAlert('error', 'Ошибка загрузки данных', 'закрыть');
     });
-}
+};
 
 getPictureList();

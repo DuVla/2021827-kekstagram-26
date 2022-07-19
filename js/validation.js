@@ -72,12 +72,12 @@ pristine.addValidator(
   'Хэш-теги не должны повторяться'
 );
 
-function resetUploadForm() {
+const resetUploadForm = () => {
   form.reset();
 
   modalCloseUploadClickHandler();
   resetInput();
-}
+};
 
 form.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();

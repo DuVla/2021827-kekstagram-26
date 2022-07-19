@@ -1,7 +1,7 @@
 import {escEvent, isOutsideEvent} from './util.js';
 
 
-export function openAlert(type, message, buttonText) {
+export const  openAlert = (type, message, buttonText) => {
   const alertTemplate = document.querySelector(`#${type}`).content.querySelector(`.${type}`);
   const alert = alertTemplate.cloneNode(true);
 
@@ -12,13 +12,13 @@ export function openAlert(type, message, buttonText) {
     closeAlertButton.textContent = buttonText;
   }
 
-  function alertCloseClickHandler() {
+  const  alertCloseClickHandler = () => {
     alert.remove();
 
     closeAlertButton.removeEventListener('click', alertCloseClickHandler);
     document.removeEventListener('click', onOutCloseClickHandler);
     document.removeEventListener('keydown', escCloseKeyHandler);
-  }
+  };
 
   function escCloseKeyHandler(evt) {
     if (escEvent(evt)) {
@@ -43,4 +43,4 @@ export function openAlert(type, message, buttonText) {
   closeAlertButton.addEventListener('click', alertCloseClickHandler);
   document.addEventListener('click', onOutCloseClickHandler);
   document.addEventListener('keydown', escCloseKeyHandler);
-}
+};

@@ -7,12 +7,12 @@ const DEFAULT_SCALE = 25;
 const MIN_SCALE = 25;
 const MAX_SCALE = 100;
 
-function setScale() {
+const  setScale = () => {
   const currentValue = parseFloat(scaleFocus.value);
   scalePreview.style.transform = `scale(${currentValue / 100})`;
-}
+};
 
-function minScaleClickHandler() {
+const minScaleClickHandler = () => {
   const currentValue = parseFloat(scaleFocus.value);
 
   if (currentValue === MIN_SCALE) {
@@ -20,9 +20,9 @@ function minScaleClickHandler() {
   }
   scaleFocus.value = `${currentValue - DEFAULT_SCALE}%`;
   setScale();
-}
+};
 
-function maxScaleClickHandler() {
+const maxScaleClickHandler = () => {
   const currentValue = parseFloat(scaleFocus.value);
 
   if (currentValue === MAX_SCALE) {
@@ -30,13 +30,12 @@ function maxScaleClickHandler() {
   }
   scaleFocus.value = `${currentValue + DEFAULT_SCALE}%`;
   setScale();
-}
+};
 
-function resetModifier() {
+export const resetModifier = () => {
   scalePreview.style.transform = '';
-}
+};
 
 scaleLowButton.addEventListener('click', minScaleClickHandler);
 scaleMoreButton.addEventListener('click', maxScaleClickHandler);
 
-export {resetModifier};
