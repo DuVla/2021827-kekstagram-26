@@ -9,7 +9,7 @@ const MAX_SCALE = 100;
 
 const  setScale = () => {
   const currentValue = parseFloat(scaleFocus.value);
-  scalePreview.style.transform = `scale(${currentValue / 100})`;
+  scalePreview.style.transform = `scale(${currentValue / MAX_SCALE})`;
 };
 
 const minScaleClickHandler = () => {

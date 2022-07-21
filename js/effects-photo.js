@@ -94,7 +94,7 @@ const updateSliderOptions = ({ RANGE: { MIN, MAX }, START, STEP, REAL_EFFECT, EF
   effectContainer.style.display = display;
 };
 
-const resetEffectSetting = () => {
+export const resetEffectSetting = () => {
   photoPreview.classList = '';
   photoPreview.style.filter = '';
 
@@ -152,4 +152,3 @@ effectList.addEventListener('change', (evt) => {
   }
 });
 
-export {resetEffectSetting};

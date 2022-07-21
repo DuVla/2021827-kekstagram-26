@@ -36,7 +36,7 @@ const escCloseKeyHandler = (evt) => {
   }
 };
 
-const modalOpenUpload = () =>{
+const modalOpenUpload = () => {
   loadingOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   //close
@@ -50,7 +50,7 @@ export const resetInput = () => {
   photoEffectPreview.src = DEFAULT_IMAGE;
 };
 
-export function modalCloseUploadClickHandler()  {
+export function modalCloseUploadClickHandler() {
   loadingOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
 
