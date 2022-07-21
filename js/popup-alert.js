@@ -12,6 +12,20 @@ export const  openAlert = (type, message, buttonText) => {
     closeAlertButton.textContent = buttonText;
   }
 
+  const escCloseKeyHandler = (evt) => {
+    if (escEvent(evt)) {
+      evt.preventDefault();
+      alert.remove();
+    }
+  };
+
+  const onOutCloseClickHandler = (evt) => {
+    if ( isOutsideEvent(evt)) {
+      evt.preventDefault();
+      alert.remove();
+    }
+  };
+
   const  alertCloseClickHandler = () => {
     alert.remove();
 
@@ -20,23 +34,9 @@ export const  openAlert = (type, message, buttonText) => {
     document.removeEventListener('keydown', escCloseKeyHandler);
   };
 
-  function escCloseKeyHandler(evt) {
-    if (escEvent(evt)) {
-      evt.preventDefault();
-      alert.remove();
-    }
-
-    closeAlertButton.removeEventListener('click', alertCloseClickHandler);
-    document.removeEventListener('click', onOutCloseClickHandler);
-    document.removeEventListener('keydown', escCloseKeyHandler);
-  }
-
-  function onOutCloseClickHandler(evt) {
-    if ( isOutsideEvent(evt)) {
-      evt.preventDefault();
-      alert.remove();
-    }
-  }
+  closeAlertButton.removeEventListener('click', alertCloseClickHandler);
+  document.removeEventListener('click', onOutCloseClickHandler);
+  document.removeEventListener('keydown', escCloseKeyHandler);
 
   document.body.append(alert);
 

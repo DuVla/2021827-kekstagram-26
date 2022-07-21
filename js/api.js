@@ -22,7 +22,7 @@ export const sendData =(onSuccess, onFailure, body) => {
     .catch(() => onFailure());
 };
 
-export async function fetchPhoto() {
+export const fetchPhoto = async () => {
   const response = await fetch(url.GET,
     {
       method: 'GET',
@@ -35,4 +35,4 @@ export async function fetchPhoto() {
   }
 
   throw new Error(`error status: ${response.status}, statusText: ${response.statusText}`);
-}
+};

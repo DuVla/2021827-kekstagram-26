@@ -12,12 +12,12 @@ const Hashtags = {
   HASHTAG_MAX_NUMBER: 5,
 };
 
-const form = document.querySelector('.img-upload__form');
-const hashtagsInput = form.querySelector('.text__hashtags');
-const descriptionInput = form.querySelector('.text__description');
+const formElement = document.querySelector('.img-upload__form');
+const hashtagsInput = formElement.querySelector('.text__hashtags');
+const descriptionInput = formElement.querySelector('.text__description');
 
 
-const pristine = new Pristine(form, {
+const pristine = new Pristine(formElement, {
   classTo: 'img-upload__field-wrapper',
   errorClass: 'img-upload__form--invalid',
   successClass: 'img-upload__form--valid',
@@ -72,20 +72,20 @@ pristine.addValidator(
 );
 
 const resetUploadForm = () => {
-  form.reset();
+  formElement.reset();
 
   modalCloseUploadClickHandler();
   resetInput();
 };
 
-form.addEventListener('submit', (evt) => {
+formElement.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();
   if (!isValid) {
     evt.preventDefault();
   }
 });
 
-form.addEventListener('submit', (evt) => {
+formElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
 
   sendData(
@@ -97,10 +97,10 @@ form.addEventListener('submit', (evt) => {
       resetUploadForm();
       openAlert('error');
     },
-    new FormData(form),
+    new FormData(formElement),
   );
 });
 
-form.addEventListener('change', () => {
+formElement.addEventListener('change', () => {
   pristine.validate();
 });
